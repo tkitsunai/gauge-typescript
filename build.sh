@@ -5,13 +5,13 @@ function checkCommand() {
 }
 
 function build() {
-    checkCommand "npm"
-    npm run build
+    checkCommand "pnpm"
+    pnpm build
 }
 
 function test() {
-    checkCommand "npm"
-    npm test
+    checkCommand "pnpm"
+    pnpm test
 }
 
 function version() {
@@ -20,21 +20,21 @@ function version() {
 }
 
 function package() {
-    checkCommand "npm"
+    checkCommand "pnpm"
     checkCommand "zip"
     rm -rf dist deploy artifacts
-    npm run build
+    pnpm build
     cp -r ./src/gen ./dist
     mkdir -p deploy
     cp launcher.* deploy
     cp ts.json deploy
     mkdir -p artifacts
-    (export version=$(version) && cd deploy && zip -r ../artifacts/gauge-ts-$version.zip .)
+    (export version=$(version) && cd deploy && zip -r ../artifacts/gauge-typescript-$version.zip .)
 }
 
 function install() {
     package
-    gauge install ts -f ./artifacts/gauge-ts-$(version).zip
+    gauge install ts -f ./artifacts/gauge-typescript-$(version).zip
 }
 
 function uninstall() {

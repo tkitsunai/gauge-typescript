@@ -23,15 +23,4 @@ export class TableRow {
     public get size(): number {
         return this._cells.size;
     }
-
-    /**
-     * @deprecated Use getCellValues() instead.
-     * @public
-     */
-    public get cells(): Array<string> {
-        console.warn('.cells accessor is deprecated. Use .getCellValues() instead.');
-
-        return Array.from(this._cells.values());
-    }
-
 }

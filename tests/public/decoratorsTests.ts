@@ -106,8 +106,8 @@ describe('decoators', () => {
             const impl = () => { return new Uint8Array(); };
             let warning = '';
 
-            console.warn = jest.fn().mockImplementation((...str) => {
-                warning = str as string;
+            console.warn = jest.fn().mockImplementation((...str: string[]) => {
+                warning = str.join('');
             });
             CustomScreenGrabber()(new Object(), '', { value: impl });
             const file = await Screenshot.capture();

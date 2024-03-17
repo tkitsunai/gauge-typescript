@@ -1,11 +1,11 @@
-# Gauge Typescript
+# Gauge for TypeScript
 [![NPM](https://img.shields.io/npm/v/gauge-ts.svg?style=flat-square)](https://www.npmjs.com/package/gauge-ts)
 [![codecov](https://codecov.io/gh/BugDiver/gauge-ts/branch/master/graph/badge.svg)](https://codecov.io/gh/BugDiver/gauge-ts)
 [![Build Status](https://dev.azure.com/bugdiver/gauge-ts/_apis/build/status/BugDiver.gauge-ts?branchName=master)](https://dev.azure.com/bugdiver/gauge-ts/_build/latest?definitionId=1&branchName=master)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://github.com/BugDiver/gauge-ts/blob/master/LICENSE)
 <a class="github-button" href="https://github.com/bugdiver/gauge-ts" data-icon="octicon-star" data-show-count="true" aria-label="Star bugdiver/gauge-ts on GitHub">Star</a>
 
-A [typescript](https://www.typescriptlang.org/) runner for [Gauge](https://gauge.org).
+A [TypeScript](https://www.typescriptlang.org/) runner for [Gauge](https://gauge.org).
 
 ## Description
 
@@ -15,19 +15,22 @@ This projects adds support for implementing your Gauge acceptance tests in types
 
 ## Features
 
-Gauge Typescript allows you to use typescript [decorators](https://www.typescriptlang.org/docs/handbook/decorators.html) to implement your `steps` and `hooks`. The `decorators` in typescript is still a experimental feature but looking at the [number of issues/requests](https://github.com/microsoft/typescript/issues?utf8=%E2%9C%93&q=is%3Aissue+decorator++support+) about it seems like it will be official 🤞.
+Gauge Typescript allows you to use TypeScript [decorators](https://www.typescriptlang.org/docs/handbook/decorators.html) to implement your `steps` and `hooks`.
 
 ## Installation
 
 ### Pre-requisite
 
-- [Gauge](https://docs.gauge.org/installing.html#installation) > v1.0.0
-- [Node js](https://nodejs.org/en/) > v10.0.0
-- [Npm](https://www.npmjs.com/) > v6.0.0
+- [Gauge](https://docs.gauge.org/installing.html#installation) > v1.5.6
+- [Node js](https://nodejs.org/en/) > v20.0.0
+- [pnpm](https://pnpm.io/) > v8.0.0 (recommend)
+- [Npm](https://www.npmjs.com/) > v10.0.0
 
+While it is possible to download dependency components using npm, we recommend using `pnpm`.
 
 The plugin has two components which has to install to run a gauge typescript project.
 The first component is in form of a gauge plugin which take care of create a gauge-ts project and starting the runner.
+
 The 2nd component is a `npm` package which gives the API which the users will use to write there step/hook implementations. The second component will be install as part of `npm install` in your gauge  typescript project.
 
 To install the first component
@@ -75,7 +78,7 @@ NOTE: All the classes containing step/hook implementations needs to be exported 
 
 **Syntax**
 
-```javascript
+```typescript
 import {Step} from 'gauge-ts';
 export default class StepImpl {
 
@@ -89,7 +92,7 @@ export default class StepImpl {
 ```
 
 **aliases**
-```javascript
+```typescript
 import {Step} from 'gauge-ts';
 export default class StepImpl {
 
@@ -106,7 +109,7 @@ export default class StepImpl {
 
 #### Suite Hooks
 
-```javascript
+```typescript
 import {BeforeSuite, AfterSuite} from 'gauge-ts';
 export default class StepImpl {
 
@@ -125,7 +128,7 @@ export default class StepImpl {
 
 #### Spec Hooks
 
-```javascript
+```typescript
 import {BeforeSpec, AfterSpec} from 'gauge-ts';
 export default class StepImpl {
 
@@ -144,7 +147,7 @@ export default class StepImpl {
 
 #### Scenario Hooks
 
-```javascript
+```typescript
 import {BeforeScenario, AfterScenario} from 'gauge-ts';
 export default class StepImpl {
 
@@ -163,7 +166,7 @@ export default class StepImpl {
 
 #### Step Hooks
 
-```javascript
+```typescript
 import {BeforeStep, AfterStep} from 'gauge-ts';
 export default class StepImpl {
 
@@ -486,7 +489,9 @@ Gauge-Ts follows the protocol and implements the apis required by gauge to suppo
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](https://github.com/bugdiver/gauge-ts/blob/master/LICENSE) for details.
+This repository forked by [@BugDiver:gauge-ts](https://github.com/bugdiver/gauge-ts/)
+
+This project is licensed under the MIT License.
 
 Copyright (c) Vinay Shankar Shukla ([@BugDiver](https://github.com/bugdiver))
 

@@ -19,7 +19,8 @@ describe('Table', () => {
             protoTable.setHeaders(headers);
             protoTable.setRowsList([row1]);
 
-            expect(Table.from(protoTable).rows[0].cells).toStrictEqual(["gauge"]);
+            
+            expect(Table.from(protoTable).getTableRows()[0].getCellValues()).toStrictEqual(["gauge"]);
         });
     });
 

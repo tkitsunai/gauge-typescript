@@ -23,7 +23,7 @@ export class StepExecutionProcessor extends ExecutionProcessor {
 
         result.setFailed(false);
         const mi = registry.get(req.getParsedsteptext());
-        const params = req.getParametersList().map((item) => {
+        const params = req.getParametersList().map((item: Parameter) => {
             return this.isTable(item) ? Table.from(item.getTable() as ProtoTable) : item.getValue();
         });
 

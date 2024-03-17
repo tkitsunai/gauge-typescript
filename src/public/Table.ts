@@ -1,4 +1,4 @@
-import { ProtoTable } from "../gen/spec_pb";
+import { ProtoTable, ProtoTableRow } from "../gen/spec_pb";
 import { TableRow } from "./TableRow";
 
 export class Table {
@@ -14,7 +14,7 @@ export class Table {
         const header = table.getHeaders();
         const gaugeTable = new Table(header?.getCellsList() ?? []);
 
-        table.getRowsList().forEach((row) => {
+        table.getRowsList().forEach((row: ProtoTableRow) => {
             gaugeTable.addRow(row.getCellsList());
         });
 
@@ -25,16 +25,6 @@ export class Table {
         this._headers = headers;
         this._rows = new Array<Array<string>>();
         this._tableRows = new Array<TableRow>();
-    }
-
-    /**
-     * @deprecated Use getTableRows() instead.
-     * @public
-     */
-    public get rows(): Array<TableRow> {
-        console.warn('.rows accessor is deprecated. Use .getTableRows() instead.');
-
-        return this._tableRows;
     }
 
     public addRow(row: Array<string>): void {
@@ -68,9 +58,7 @@ export class Table {
     }
 
     public getColumnValues(columnName: string): Array<string> {
-        const i = this._headers.indexOf(columnName);
-
-        return this.getColumnValuesForIndex(i);
+        return this.getColumnValuesForIndex(this._headers.indexOf(columnName));
     }
 
     public getColumnValuesForIndex(index: number): string[] {

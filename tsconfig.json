@@ -57,6 +57,7 @@
                 "cacheBetweenTests": false
             }
         ],
+        "noImplicitAny": false,
     },
     "include": [
         "src/**/*"

@@ -1,26 +1,25 @@
-# Gauge for TypeScript
+# Gauge-Ts
 
-<!-- [![Actions Status](https://github.com/bugdiver/gauge-ts/workflows/Node%20CI/badge.svg)](https://github.com/BugDiver/gauge-ts/actions)
+[![Actions Status](https://github.com/bugdiver/gauge-ts/workflows/Node%20CI/badge.svg)](https://github.com/BugDiver/gauge-ts/actions)
 [![codecov](https://codecov.io/gh/BugDiver/gauge-ts/branch/master/graph/badge.svg)](https://codecov.io/gh/BugDiver/gauge-ts)
-[![npm version](https://badge.fury.io/js/gauge-ts.svg)](https://badge.fury.io/js/gauge-ts) -->
+[![npm version](https://badge.fury.io/js/gauge-ts.svg)](https://badge.fury.io/js/gauge-ts)
 
-This project adds TypeScript [language plugin](https://docs.gauge.org/latest/installation.html#language-runner) for [Gauge](http://gauge.org).
+This project adds typescript [language plugin](https://docs.gauge.org/latest/installation.html#language-runner) for [gauge](http://gauge.org).
 
-The plugin is authored in [TypeScript](https://en.wikipedia.org/wiki/TypeScript).
+The plugin is authored in [typescript](https://en.wikipedia.org/wiki/TypeScript).
 
 ## Getting started
 
-API Reference: https://tkitsunai.github.io/gauge-typescript
+Refer https://bugdiver.dev/gauge-ts
 
 ## Deveopement
 
 #### Build from Source
 
 ##### Requirements
-- [Gauge](https://docs.gauge.org/installing.html#installation) > v1.6.4
-- [Node js](https://nodejs.org/en/) > v20.0.0
-- [pnpm](https://pnpm.io/) > v8.0.0 (recommend)
-- [Npm](https://www.npmjs.com/) > v10.0.0
+- [Gauge](https://gauge.org)
+- [Node js](https://nodejs.org/en/)
+- [Npm](https://www.npmjs.com/)
 - [JQ](https://stedolan.github.io/jq/) (for unix)
 
 

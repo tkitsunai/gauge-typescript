@@ -1,7 +1,4 @@
 import { DataStore } from "./DataStore";
-import {GlobalDataStore} from "./GlobalDataStore";
-
-declare const global: GlobalDataStore;
 
 export class DataStoreFactory {
 

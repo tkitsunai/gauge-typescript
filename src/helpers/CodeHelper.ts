@@ -1,4 +1,4 @@
-import {createPrinter, Decorator, MethodDeclaration, Printer, TextRange} from "typescript";
+import {createPrinter, Decorator, getDecorators, MethodDeclaration, Printer, TextRange} from "typescript";
 
 export type ExpressionElementType = {
     text: string;
@@ -21,7 +21,12 @@ export abstract class CodeHelper {
     protected printer: Printer = createPrinter();
 
     protected getStepTexts(method: MethodDeclaration): Array<string> {
-        const dec = (method.decorators as unknown) as Array<Decorator>;
+        const dec = getDecorators(method)
+
+        if (!dec) {
+            return []
+        }
+
         const stepDecExp = (dec.filter(CodeHelper.isStepDecorator)[0]
             .expression as unknown) as ExpressionType;
         const arg = stepDecExp.arguments[0];
@@ -42,22 +47,31 @@ export abstract class CodeHelper {
     }
 
     protected hasStepDecorator(method: MethodDeclaration): boolean {
-        return !!method.decorators && method.decorators.some(CodeHelper.isStepDecorator);
+        const dec = getDecorators(method)
+        if (dec) {
+            return !!dec && dec.some(CodeHelper.isStepDecorator);
+        }
+        return false;
     }
 
     protected hasStepText(method: MethodDeclaration, stepText: string): boolean {
-        const dec = (method.decorators as unknown) as Array<Decorator>;
-    const stepDecExp = (dec.filter(CodeHelper.isStepDecorator)[0]
+        const dec = getDecorators(method)
+        
+        if (dec) {
+            const stepDecExp = (dec.filter(CodeHelper.isStepDecorator)[0]
             .expression as unknown) as ExpressionType;
-        const arg = stepDecExp.arguments[0];
+            const arg = stepDecExp.arguments[0];
 
-        if (!arg.text && arg.elements) {
-            return arg.elements.some((e) => {
-                return e.text === stepText;
-            });
+            if (!arg.text && arg.elements) {
+                return arg.elements.some((e) => {
+                    return e.text === stepText;
+                });
+            }
+
+            return arg.text === stepText;
         }
 
-        return arg.text === stepText;
+        return false;
     }
 
 }
