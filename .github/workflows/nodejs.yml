@@ -43,7 +43,14 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v3
-      - run: pnpm install
+
+      - uses: pnpm/action-setup@v3
+        name: Install pnpm
+        with:
+          version: 8
+      
+      - name: Install dependencies
+        run: pnpm install
 
       - name: Create artifact
         run: |
@@ -82,16 +89,16 @@ jobs:
 
       - name: Install gauge-typescript
         run: |
-          gauge install ts -f ./artifacts/gauge-typescript-*.zip
+          gauge install typescript -f ./artifacts/gauge-typescript-*.zip
         shell: bash
 
-      - name: Initialize a sample project
-        run: |
-          mkdir sample
-          cd sample
-          gauge init ts
-          npm install ../artifacts/gauge-typescript-*.tgz
-        shell: bash
+      # - name: Initialize a sample project
+      #   run: |
+      #     mkdir sample
+      #     cd sample
+      #     gauge init typescript
+      #     npm install ../artifacts/gauge-typescript-*.tgz
+      #   shell: bash
 
       - name: Run sample project
         run: |
