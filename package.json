@@ -1,6 +1,6 @@
 {
   "name": "gauge-typescript",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "TypeScript language runner for gauge",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
