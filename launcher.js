@@ -8,7 +8,7 @@ if (parseInt(version[0]) < 20) {
 }
 
 let stepImpl = `
-import { Step, Table } from "gauge-ts";
+import { Step, Table } from "gauge-typescript";
 import { strictEqual } from "assert";
 
 export default class StepImplementation {
@@ -45,8 +45,8 @@ export default class StepImplementation {
 `
 
 let defaultProperties = `
-#ts.properties
-#settings related to gauge-ts.
+#typescript.properties
+#settings related to gauge-typescript.
 
 # Comma separated list of dirs. path should be relative to project root.
 STEP_IMPL_DIR = tests
@@ -129,7 +129,7 @@ if (process.argv[2] === "--init") {
         if (err && err.code !== "EEXIST") {
           console.error(err);
         } else {
-          fs.writeFileSync(path.join(defaultDir, 'ts.properties'), defaultProperties);
+          fs.writeFileSync(path.join(defaultDir, 'typescript.properties'), defaultProperties);
         }
       });
     }
@@ -142,7 +142,7 @@ if (process.argv[2] === "--init") {
 }
 
 else if (process.argv[2] === "--start") {
-  var script = 'import { GaugeRuntime }  from "gauge-ts/dist/GaugeRuntime";'
+  var script = 'import { GaugeRuntime }  from "gauge-typescript/dist/GaugeRuntime";'
     + `let runner = new GaugeRuntime();`
     + `runner.start();`
   var opts = [
