@@ -16,7 +16,7 @@ function test() {
 
 function version() {
     checkCommand "jq"
-    echo `cat ts.json | jq -r .version`
+    echo `cat typescript.json | jq -r .version`
 }
 
 function package() {
@@ -27,18 +27,18 @@ function package() {
     cp -r ./src/gen ./dist
     mkdir -p deploy
     cp launcher.* deploy
-    cp ts.json deploy
+    cp typescript.json deploy
     mkdir -p artifacts
     (export version=$(version) && cd deploy && zip -r ../artifacts/gauge-typescript-$version.zip .)
 }
 
 function install() {
     package
-    gauge install ts -f ./artifacts/gauge-typescript-$(version).zip
+    gauge install typescript -f ./artifacts/gauge-typescript-$(version).zip
 }
 
 function uninstall() {
-    gauge uninstall ts -v $(version)
+    gauge uninstall typescript -v $(version)
 }
 
 function forceinstall() {

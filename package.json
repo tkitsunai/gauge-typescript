@@ -12,7 +12,9 @@
     "codecov": "codecov",
     "test": "jest --verbose --detectOpenHandles --forceExit",
     "gen-proto": "sh genproto.sh",
-    "prepublishOnly": "tsc"
+    "prepublishOnly": "tsc",
+    "package": "sh build.sh package",
+    "installPlugin": "sh build.sh install"
   },
   "repository": {
     "type": "git",

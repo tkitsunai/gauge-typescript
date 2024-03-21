@@ -1,6 +1,6 @@
 #! /usr/bin/env node
 
-var tsVersion = require("./ts.json").version;
+var tsVersion = require("./typescript.json").version;
 
 var version = process.versions.node.split(".");
 if (parseInt(version[0]) < 20) {

@@ -21,12 +21,12 @@ $tasks.Add('package', @{
             Invoke-Command $tasks.Get_Item("build").script
             mkdir -p deploy
             Copy-Item launcher.* deploy
-            Copy-Item ts.json deploy
+            Copy-Item typescript.json deploy
             mkdir artifacts
             $version = version
             $src = Join-Path -Path (Get-Location).Path -ChildPath "deploy"
             $artifacts = Join-Path -Path  (Get-Location).Path -ChildPath "artifacts"
-            $dest = Join-Path -Path $artifacts -ChildPath "gauge-ts-$version.zip"
+            $dest = Join-Path -Path $artifacts -ChildPath "gauge-typescript-$version.zip"
             Add-Type -Assembly "System.IO.Compression.FileSystem" ;
             [System.IO.Compression.ZipFile]::CreateFromDirectory($src, $dest)
         }
@@ -38,7 +38,7 @@ $tasks.Add('install', @{
         script      = {
             Invoke-Command $tasks.Get_Item("package").script
             $version = version
-            gauge install ts -f ".\artifacts\gauge-ts-$version.zip"
+            gauge install typescript -f ".\artifacts\gauge-typescript-$version.zip"
         }
     })
 
@@ -47,7 +47,7 @@ $tasks.Add('uninstall', @{
         description = "UnInstall gauge-ts plugin's current version";
         script      = {
             $version = version
-            gauge uninstall ts -v $version
+            gauge uninstall typescript -v $version
         }
     })
 

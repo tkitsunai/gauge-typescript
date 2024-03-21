@@ -1,7 +1,6 @@
 # Gauge for TypeScript
 
 <!-- [![Actions Status](https://github.com/bugdiver/gauge-ts/workflows/Node%20CI/badge.svg)](https://github.com/BugDiver/gauge-ts/actions)
-[![codecov](https://codecov.io/gh/BugDiver/gauge-ts/branch/master/graph/badge.svg)](https://codecov.io/gh/BugDiver/gauge-ts)
 [![npm version](https://badge.fury.io/js/gauge-ts.svg)](https://badge.fury.io/js/gauge-ts) -->
 
 This project adds TypeScript [language plugin](https://docs.gauge.org/latest/installation.html#language-runner) for [Gauge](http://gauge.org).
