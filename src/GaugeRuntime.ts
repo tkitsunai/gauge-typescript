@@ -7,7 +7,6 @@ export class GaugeRuntime {
 
     public start(): void {
         const loader = new StaticLoader();
-
         loader.loadImplementations();
         const server = new Server();
 
@@ -16,6 +15,7 @@ export class GaugeRuntime {
         server.addService(RunnerService, new RunnerServiceImpl(server, loader));
         server.bindAsync("127.0.0.1:0", ServerCredentials.createInsecure(), (err: Error | null, port: number) => {
             if (err) {
+                console.log(err)
                 throw err;
             }
             console.log(`Listening on port:${port}`);

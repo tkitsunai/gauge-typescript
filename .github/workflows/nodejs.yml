@@ -92,15 +92,15 @@ jobs:
           gauge install typescript -f ./artifacts/gauge-typescript-*.zip
         shell: bash
 
-      # - name: Initialize a sample project
-      #   run: |
-      #     mkdir sample
-      #     cd sample
-      #     gauge init typescript
-      #     npm install ../artifacts/gauge-typescript-*.tgz
-      #   shell: bash
+      - name: Initialize a sample project
+        run: |
+          mkdir sample
+          cd sample
+          gauge init https://github.com/tkitsunai/gauge-template-typescript/archive/refs/tags/v0.1.1.zip
+          npm install ../artifacts/gauge-typescript-*.tgz
+        shell: bash
 
-      # - name: Run sample project
-      #   run: |
-      #     cd sample
-      #     gauge run specs
+      - name: Run sample project
+        run: |
+          cd sample
+          gauge run specs
