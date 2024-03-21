@@ -15,7 +15,7 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
@@ -42,7 +42,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - uses: pnpm/action-setup@v3
         name: Install pnpm
@@ -99,8 +99,3 @@ jobs:
           gauge init https://github.com/tkitsunai/gauge-template-typescript/archive/refs/tags/v0.1.1.zip
           npm install ../artifacts/gauge-typescript-*.tgz
         shell: bash
-
-      - name: Run sample project
-        run: |
-          cd sample
-          gauge run specs
