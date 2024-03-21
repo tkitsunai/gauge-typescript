@@ -1,7 +1,7 @@
 {
   "name": "gauge-typescript",
   "version": "0.2.1",
-  "description": "TypeScript language runner for gauge",
+  "description": "TypeScript language runner for Gauge",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
@@ -14,7 +14,8 @@
     "gen-proto": "sh genproto.sh",
     "prepublishOnly": "tsc",
     "package": "sh build.sh package",
-    "installPlugin": "sh build.sh install"
+    "installPlugin": "sh build.sh install",
+    "uninstallPlugin": "sh build.sh uninstall"
   },
   "repository": {
     "type": "git",
@@ -39,6 +40,7 @@
     "google-protobuf": "^3.21.2",
     "klaw-sync": "^6.0.0",
     "ts-node": "10.9.2",
+    "tsx": "^4.7.1",
     "typescript": "5.4.2",
     "uuid": "^9.0.1"
   },

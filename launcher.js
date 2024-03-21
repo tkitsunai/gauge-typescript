@@ -150,8 +150,9 @@ else if (process.argv[2] === "--start") {
     ...hasModule('tsconfig-paths') ? ['-r', 'tsconfig-paths/register'] : [],
     '-e', script
   ];
-  let tsNode = path.join(GAUGE_PROJECT_ROOT, 'node_modules', '.bin', 'ts-node');
-  var runner = cp.spawn(getCommand(tsNode), opts, {
+  //let tsNode = path.join(GAUGE_PROJECT_ROOT, 'node_modules', '.bin', 'ts-node');
+  let tsxPath = path.join(GAUGE_PROJECT_ROOT, 'node_modules', '.bin', 'tsx');
+  var runner = cp.spawn(getCommand(tsxPath), opts, {
     env: process.env,
     silent: false,
     stdio: "inherit",

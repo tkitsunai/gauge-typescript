@@ -19,7 +19,6 @@ export class GaugeRuntime {
                 throw err;
             }
             console.log(`Listening on port:${port}`);
-            server.start();
         });
     }
 
