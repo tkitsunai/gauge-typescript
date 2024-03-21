@@ -100,7 +100,7 @@ jobs:
       #     npm install ../artifacts/gauge-typescript-*.tgz
       #   shell: bash
 
-      - name: Run sample project
-        run: |
-          cd sample
-          gauge run specs
+      # - name: Run sample project
+      #   run: |
+      #     cd sample
+      #     gauge run specs

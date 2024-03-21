@@ -64,7 +64,7 @@ $tasks.Add('forceinstall', @{
 
 # Helper functions
 function version {
-    $runnerManifest = Get-Content .\ts.json | Out-String | ConvertFrom-Json
+    $runnerManifest = Get-Content .\typescript.json | Out-String | ConvertFrom-Json
     $version = $runnerManifest.version
     return $version
 }
