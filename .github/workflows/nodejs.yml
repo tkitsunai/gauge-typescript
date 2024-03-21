@@ -1,4 +1,4 @@
-name: CI test
+name: CI-testing
 
 on:
   push:
@@ -42,7 +42,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
-      - uses: actions/checkout@v3
+        uses: actions/checkout@v3
       - run: pnpm install
 
       - name: Create artifact
