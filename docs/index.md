@@ -1,9 +1,8 @@
 # Gauge for TypeScript
-[![NPM](https://img.shields.io/npm/v/gauge-ts.svg?style=flat-square)](https://www.npmjs.com/package/gauge-ts)
-[![codecov](https://codecov.io/gh/BugDiver/gauge-ts/branch/master/graph/badge.svg)](https://codecov.io/gh/BugDiver/gauge-ts)
-[![Build Status](https://dev.azure.com/bugdiver/gauge-ts/_apis/build/status/BugDiver.gauge-ts?branchName=master)](https://dev.azure.com/bugdiver/gauge-ts/_build/latest?definitionId=1&branchName=master)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://github.com/BugDiver/gauge-ts/blob/master/LICENSE)
-<a class="github-button" href="https://github.com/bugdiver/gauge-ts" data-icon="octicon-star" data-show-count="true" aria-label="Star bugdiver/gauge-ts on GitHub">Star</a>
+[![NPM](https://img.shields.io/npm/v/gauge-typescript.svg?style=flat-square)](https://www.npmjs.com/package/gauge-typescript)
+![GHA](https://github.com/tkitsunai/gauge-typescript/actions/workflows/nodejs.yml/badge.svg)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://github.com/tkitsunai/gauge-typescript/blob/master/LICENSE)
+<a class="github-button" href="https://github.com/tkitsunai/gauge-typescript" data-icon="octicon-star" data-show-count="true" aria-label="Star tkitsunai/gauge-typescript on GitHub">Star</a>
 
 A [TypeScript](https://www.typescriptlang.org/) runner for [Gauge](https://gauge.org).
 
@@ -12,6 +11,7 @@ A [TypeScript](https://www.typescriptlang.org/) runner for [Gauge](https://gauge
 This projects adds support for implementing your Gauge acceptance tests in typescript language. Here are the few motivations
 * https://github.com/getgauge/gauge/issues/293
 * https://github.com/getgauge/gauge-js/issues/187
+* Ongoing updates to dependency libraries
 
 ## Features
 
@@ -31,44 +31,39 @@ While it is possible to download dependency components using npm, we recommend u
 The plugin has two components which has to install to run a gauge typescript project.
 The first component is in form of a gauge plugin which take care of create a gauge-ts project and starting the runner.
 
-The 2nd component is a `npm` package which gives the API which the users will use to write there step/hook implementations. The second component will be install as part of `npm install` in your gauge  typescript project.
+The 2nd component is a `npm` package which gives the API which the users will use to write there step/hook implementations. The second component will be install as part of `npm install`or`pnpm install` in your gauge typescript project.
 
 To install the first component
 
-```bash
-gauge install ts
-```
-
-or download the `zip` file from [Github Release](https://github.com/BugDiver/gauge-ts/releases) and run
+or download the `zip` file from [Github Release](https://github.com/tkitsunai/gauge-typescript/releases) and run
 
 ```
-gauge install ts -f {location_of_zip_file}
+gauge install typescript -f {location_of_zip_file}
 ```
 
 ## Create a Project
 
-Once you have installed the `gauge-ts` plugin, you can create a sample app. To verify your installation run 
+Once you have installed the `gauge-typescript` plugin, you can create a sample app. To verify your installation run 
 
 ```bash
 gauge -v
 ```
 The output should contain
 
-`ts (VERSION_OF_PLUGIN)`
+`typescript (VERSION_OF_PLUGIN)`
 
 Now you can run the following command to create a sample project in a empty dir (create a new one for your test project)
 ```bash
-gauge init ts
+gauge init https://github.com/tkitsunai/gauge-template-typescript/archive/refs/tags/v0.1.1.zip
 ```
 
 ## Run a Project
 
-Once the initialization is done run `npm install` to get all the required dependencies.
+Once the initialization is done run `npm install`or`pnpm install` to get all the required dependencies.
 Now you can run `gauge run specs` to run your project.
 Open the project in your favorite editor and start adding some new tests.
 
-
-## APIS
+## APIs
 
 NOTE: All the classes containing step/hook implementations needs to be exported as `default`.
 
@@ -79,7 +74,7 @@ NOTE: All the classes containing step/hook implementations needs to be exported 
 **Syntax**
 
 ```typescript
-import {Step} from 'gauge-ts';
+import {Step} from 'gauge-typescript';
 export default class StepImpl {
 
     @Step("Hello <world>")
@@ -93,7 +88,7 @@ export default class StepImpl {
 
 **aliases**
 ```typescript
-import {Step} from 'gauge-ts';
+import {Step} from 'gauge-typescript';
 export default class StepImpl {
 
     @Step(["Hello <world>", "Hi <world>"])
@@ -110,7 +105,7 @@ export default class StepImpl {
 #### Suite Hooks
 
 ```typescript
-import {BeforeSuite, AfterSuite} from 'gauge-ts';
+import {BeforeSuite, AfterSuite} from 'gauge-typescript';
 export default class StepImpl {
 
     @BeforeSuite()
@@ -129,7 +124,7 @@ export default class StepImpl {
 #### Spec Hooks
 
 ```typescript
-import {BeforeSpec, AfterSpec} from 'gauge-ts';
+import {BeforeSpec, AfterSpec} from 'gauge-typescript';
 export default class StepImpl {
 
     @BeforeSpec()
@@ -148,7 +143,7 @@ export default class StepImpl {
 #### Scenario Hooks
 
 ```typescript
-import {BeforeScenario, AfterScenario} from 'gauge-ts';
+import {BeforeScenario, AfterScenario} from 'gauge-typescript';
 export default class StepImpl {
 
     @BeforeScenario()
@@ -167,7 +162,7 @@ export default class StepImpl {
 #### Step Hooks
 
 ```typescript
-import {BeforeStep, AfterStep} from 'gauge-ts';
+import {BeforeStep, AfterStep} from 'gauge-typescript';
 export default class StepImpl {
 
     @BeforeStep()
@@ -188,8 +183,8 @@ export default class StepImpl {
 Gauge allows to control the execution by running filtered hooks using `tags`. 
 
 
-```javascript
-import {BeforeSpec} from 'gauge-ts';
+```typescript
+import {BeforeSpec} from 'gauge-typescript';
 export default class StepImpl {
 
     @BeforeSpec({tags: ["ready"]})
@@ -203,8 +198,8 @@ export default class StepImpl {
 You can use operators as well to filter hooks
 
 
-```javascript
-import {BeforeSpec, BeforeScenario, Operator} from 'gauge-ts';
+```typescript
+import {BeforeSpec, BeforeScenario, Operator} from 'gauge-typescript';
 export default class StepImpl {
 
     @BeforeSpec({tags: ["ready", "done"], operator: Operator.And})
@@ -227,8 +222,8 @@ NOTE: `tags` are not applicable for `<Before | After>Suite` hooks.
 To get additional information about the current specification, scenario and step executing, an additional ExecutionContext parameter can be added to the hooks method.
 
 
-```javascript
-import {BeforeStep, AfterStep, ExecutionContext, Scenario, StepInfo} from 'gauge-ts';
+```typescript
+import {BeforeStep, AfterStep, ExecutionContext, Scenario, StepInfo} from 'gauge-typescript';
 export default class StepImpl {
 
     @BeforeStep()
@@ -261,9 +256,9 @@ This data store keeps values added to it during the life cycle of entire suite e
 
 WARNING: `SuiteStore` is not advised to be used when executing specs in parallel. The values are not retained between parallel streams of execution.
 
-```javascript
+```typescript
 // import factory
-import {DataStoreFactory, DataStore} from 'gauge-ts';
+import {DataStoreFactory, DataStore} from 'gauge-typescript';
 
 // Adding value
 let suiteStore: DataStore = DataStoreFactory.getSuiteDataStore();
@@ -279,9 +274,9 @@ String elementId = suiteStore.get("element-id") as string;
 
 This data store keeps values added to it during the life cycle of the specification execution. Values are cleared after every specification executes.
 
-```javascript
+```typescript
 // import factory
-import {DataStoreFactory, DataStore} from 'gauge-ts';
+import {DataStoreFactory, DataStore} from 'gauge-typescript';
 
 // Adding value
 let specStore: DataStore = DataStoreFactory.getSpecDataStore();
@@ -297,9 +292,9 @@ String elementId = specStore.get("element-id") as string;
 
 This data store keeps values added to it in the life cycle of the scenario execution. Values are cleared after every scenario executes.
 
-```javascript
+```typescript
 // import factory
-import {DataStoreFactory, DataStore} from 'gauge-ts';
+import {DataStoreFactory, DataStore} from 'gauge-typescript';
 
 // Adding value
 let scenarioStore: DataStore = DataStoreFactory.getSpecDataStore();
@@ -314,11 +309,11 @@ String elementId = scenarioStore.get("element-id") as string;
 ### Custom Screenshots
 
 * By default gauge captures the display screen on failure if this feature has been enabled.
-If you need to take CustomScreenshots (using webdriver for example) because you need only a part of the screen captured, this can be done by assigning a `CustomScreenshotGrabber` to `gauge-ts`
+If you need to take CustomScreenshots (using webdriver for example) because you need only a part of the screen captured, this can be done by assigning a `CustomScreenshotGrabber` to `gauge-typescript`
 
-```javascript
+```typescript
 // import CustomScreenshotGrabber
-import {CustomScreenGrabber} from 'gauge-ts';
+import {CustomScreenGrabber} from 'gauge-typescript';
 
 export default class ScreenGrabber {
     @CustomScreenGrabber()
@@ -332,8 +327,8 @@ export default class ScreenGrabber {
 
 DEPRECATION NOTICE: `CustomScreenshotGrabber` has been deprecated since gauge-ts v0.0.5, please use `CustomScreenshotWriter` as mentioned below
 
-```javascript
-import { CustomScreenshotWriter } from 'gauge-ts';
+```typescript
+import { CustomScreenshotWriter } from 'gauge-typescript';
 import { join, basename } from 'path';
 
 const { screenshot } = require('taiko');
@@ -358,9 +353,9 @@ Custom messages/data can be added to execution reports using the below API from 
 
 These messages will appear under steps in the execution reports.
 
-```javascript
+```typescript
 // import the class
-import {Gauge} from 'gauge-ts';
+import {Gauge} from 'gauge-typescript';
 
 // write messages
 Gauge.writeMessage("Custom message for report");
@@ -371,9 +366,9 @@ Gauge.writeMessage("Custom message for report");
 Custom screenshot can be added to execution reports using the below API from the step implementations or hooks.
 
 These screenshots will appear under steps in the execution reports.
-```javascript
+```typescript
 // import the class
-import {Gauge} from 'gauge-ts';
+import {Gauge} from 'gauge-typescript';
 
 // write messages
 await Gauge.captureScreenshot();
@@ -384,9 +379,9 @@ await Gauge.captureScreenshot();
 The default behavior in gauge is to break execution on the first failure in a step. So, if the first step in a scenario fails, the subsequent steps are skipped. While this works for a majority of use cases, there are times when you need to execute all steps in a scenario irrespective of whether the previous steps have failed or not.
 
 To address that requirement, gauge provides a way for language runners to mark steps as recoverable, depending on whether the step implementation asks for it explicitly. Each language runner uses different syntax, depending on the language idioms to allow a step implementation to be marked to continue on failure.
-```javascript
+```typescript
 // import type
-import {ContinueOnFailure} from 'gauge-ts';
+import {ContinueOnFailure} from 'gauge-typescript';
 
 // The ``@ContinueOnFailure`` decorator tells Gauge to continue executing other
 // steps even if the current step fails.
@@ -403,9 +398,9 @@ export default class StepImplementation {
 
 Continue on Failure can take an optional parameter to specify the list of error classes on which it would continue to execute further steps in case of failure. This is currently supported only with the following runners.
 
-```javascript
+```typescript
 // import type
-import {ContinueOnFailure} from 'gauge-ts';
+import {ContinueOnFailure} from 'gauge-typescript';
 export default class StepImpl {
     @ContinueOnFailure(['AssertionError', 'CustomError'])
     @Step("hello")
@@ -479,15 +474,17 @@ This will change all spec files to reflect the change.
 
 Gauge supports [LSP](https://blog.getgauge.io/gauge-and-the-language-server-protocol-c56fbcfba177) which can be used to used to integrate Gauge with any (if it supports) LSP. Gauge has it's official plugin for [Visual Studio Code](https://github.com/getgauge/gauge-vscode/blob/master/README.md) which allows author/debug to write their tests in multiple language.
 
-Gauge-Ts follows the protocol and implements the apis required by gauge to support a language. Install the `gauge` plugin for VS Code for a rich editing and debugging support with Gauge and Typescript.
+Gauge-TypeScript follows the protocol and implements the apis required by gauge to support a language. Install the `gauge` plugin for VS Code for a rich editing and debugging support with Gauge and Typescript.
 
 
 ## Contact & Support
 
-- Create a [Github issue](https://github.com/bugdiver/gauge-ts/issues) for bug reports, feature requests, or questions
-- Add a ⭐️ [star on GitHub](https://github.com/bugdiver/gauge-ts) or ❤️ [tweet](https://twitter.com/intent/tweet?url=https%3A%2F%2Fgithub.com%2Fbugdiver%2Fgauge-ts&via=bugdiverr&hashtags=getgauge,automation,bdd,typescript) to support the project!
+- Create a [Github issue](https://github.com/tkitsunai/gauge-typescript/issues) for bug reports, feature requests, or questions
+- Add a ⭐️ [star on GitHub](https://github.com/tkitsunai/gauge-typescript) or ❤️ [tweet](https://twitter.com/intent/tweet?url=https%3A%2F%2Fgithub.com%2Ftkitsunai%2Fgauge-typescript&via=tkitsunai&hashtags=getgauge,automation,bdd,typescript) to support the project!
 
 ## License
+
+Maintain by [@tkitsunai](https://twitter.com/tkitsunai)
 
 This repository forked by [@BugDiver:gauge-ts](https://github.com/bugdiver/gauge-ts/)
 

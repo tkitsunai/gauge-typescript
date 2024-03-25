@@ -26,6 +26,7 @@ function package() {
     pnpm build
     cp -r ./src/gen ./dist
     mkdir -p deploy
+    cp -r scripts/* deploy
     cp launcher.* deploy
     cp typescript.json deploy
     mkdir -p artifacts

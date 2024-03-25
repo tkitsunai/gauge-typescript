@@ -143,16 +143,18 @@ if (process.argv[2] === "--init") {
 
 else if (process.argv[2] === "--start") {
   var script = 'import { GaugeRuntime }  from "gauge-typescript/dist/GaugeRuntime";'
-    + `let runner = new GaugeRuntime();`
+    + `const runner = new GaugeRuntime();`
     + `runner.start();`
+
+  const scriptContent = fs.readFileSync(path.join(__dirname, "runnerRuntime.ts"), { encoding: 'utf8' });
+
   var opts = [
     '-O', `{"experimentalDecorators": true,"emitDecoratorMetadata": true}`,
     ...hasModule('tsconfig-paths') ? ['-r', 'tsconfig-paths/register'] : [],
-    '-e', script
+    '-e', scriptContent
   ];
-  //let tsNode = path.join(GAUGE_PROJECT_ROOT, 'node_modules', '.bin', 'ts-node');
-  let tsxPath = path.join(GAUGE_PROJECT_ROOT, 'node_modules', '.bin', 'tsx');
-  var runner = cp.spawn(getCommand(tsxPath), opts, {
+  let tsNode = path.join(GAUGE_PROJECT_ROOT, 'node_modules', '.bin', 'ts-node');
+  var runner = cp.spawn(getCommand(tsNode), opts, {
     env: process.env,
     silent: false,
     stdio: "inherit",

@@ -1,11 +1,14 @@
 # Gauge for TypeScript
 
-<!-- [![Actions Status](https://github.com/bugdiver/gauge-ts/workflows/Node%20CI/badge.svg)](https://github.com/BugDiver/gauge-ts/actions)
-[![npm version](https://badge.fury.io/js/gauge-ts.svg)](https://badge.fury.io/js/gauge-ts) -->
+![GHA](https://github.com/tkitsunai/gauge-typescript/actions/workflows/nodejs.yml/badge.svg)
+[![NPM](https://img.shields.io/npm/v/gauge-typescript.svg?style=flat-square)](https://www.npmjs.com/package/gauge-typescript)
 
 This project adds TypeScript [language plugin](https://docs.gauge.org/latest/installation.html#language-runner) for [Gauge](http://gauge.org).
 
 The plugin is authored in [TypeScript](https://en.wikipedia.org/wiki/TypeScript).
+
+[!NOTE]
+This project was forked from gauge-ts to continuously maintain gauge-typescript. Therefore, to update to a new version of gauge-typescript, you will need to install it from the source code. If you need further support, please feel free to contact us.
 
 ## Getting started
 
@@ -47,5 +50,3 @@ To install the the typescript plugin use(Note, this will uninstall gauge-ts befo
 ````
 ./build.sh | .\build.ps1  package
 ````
-
-New distribution details need to be updated in the dotnet-install.json file in  [gauge plugin repository](https://github.com/getgauge/gauge-repository) for a new verison update.
