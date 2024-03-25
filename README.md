@@ -7,8 +7,8 @@ This project adds TypeScript [language plugin](https://docs.gauge.org/latest/ins
 
 The plugin is authored in [TypeScript](https://en.wikipedia.org/wiki/TypeScript).
 
-[!NOTE]
-This project was forked from gauge-ts to continuously maintain gauge-typescript. Therefore, to update to a new version of gauge-typescript, you will need to install it from the source code. If you need further support, please feel free to contact us.
+> [!NOTE]
+> This project was forked from gauge-ts to continuously maintain gauge-typescript. Therefore, to update to a new version of gauge-typescript, you will need to install it from the source code. If you need further support, please feel free to contact us.
 
 ## Getting started
 
