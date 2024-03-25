@@ -73,7 +73,7 @@ NOTE: All the classes containing step/hook implementations needs to be exported 
 
 **Syntax**
 
-```typescript
+```ts
 import {Step} from 'gauge-typescript';
 export default class StepImpl {
 
@@ -87,7 +87,7 @@ export default class StepImpl {
 ```
 
 **aliases**
-```typescript
+```ts
 import {Step} from 'gauge-typescript';
 export default class StepImpl {
 
@@ -104,7 +104,7 @@ export default class StepImpl {
 
 #### Suite Hooks
 
-```typescript
+```ts
 import {BeforeSuite, AfterSuite} from 'gauge-typescript';
 export default class StepImpl {
 
@@ -123,7 +123,7 @@ export default class StepImpl {
 
 #### Spec Hooks
 
-```typescript
+```ts
 import {BeforeSpec, AfterSpec} from 'gauge-typescript';
 export default class StepImpl {
 
@@ -142,7 +142,7 @@ export default class StepImpl {
 
 #### Scenario Hooks
 
-```typescript
+```ts
 import {BeforeScenario, AfterScenario} from 'gauge-typescript';
 export default class StepImpl {
 
@@ -161,7 +161,7 @@ export default class StepImpl {
 
 #### Step Hooks
 
-```typescript
+```ts
 import {BeforeStep, AfterStep} from 'gauge-typescript';
 export default class StepImpl {
 
@@ -183,7 +183,7 @@ export default class StepImpl {
 Gauge allows to control the execution by running filtered hooks using `tags`. 
 
 
-```typescript
+```ts
 import {BeforeSpec} from 'gauge-typescript';
 export default class StepImpl {
 
@@ -198,7 +198,7 @@ export default class StepImpl {
 You can use operators as well to filter hooks
 
 
-```typescript
+```ts
 import {BeforeSpec, BeforeScenario, Operator} from 'gauge-typescript';
 export default class StepImpl {
 
@@ -222,7 +222,7 @@ NOTE: `tags` are not applicable for `<Before | After>Suite` hooks.
 To get additional information about the current specification, scenario and step executing, an additional ExecutionContext parameter can be added to the hooks method.
 
 
-```typescript
+```ts
 import {BeforeStep, AfterStep, ExecutionContext, Scenario, StepInfo} from 'gauge-typescript';
 export default class StepImpl {
 
@@ -256,7 +256,7 @@ This data store keeps values added to it during the life cycle of entire suite e
 
 WARNING: `SuiteStore` is not advised to be used when executing specs in parallel. The values are not retained between parallel streams of execution.
 
-```typescript
+```ts
 // import factory
 import {DataStoreFactory, DataStore} from 'gauge-typescript';
 
@@ -274,7 +274,7 @@ String elementId = suiteStore.get("element-id") as string;
 
 This data store keeps values added to it during the life cycle of the specification execution. Values are cleared after every specification executes.
 
-```typescript
+```ts
 // import factory
 import {DataStoreFactory, DataStore} from 'gauge-typescript';
 
@@ -292,7 +292,7 @@ String elementId = specStore.get("element-id") as string;
 
 This data store keeps values added to it in the life cycle of the scenario execution. Values are cleared after every scenario executes.
 
-```typescript
+```ts
 // import factory
 import {DataStoreFactory, DataStore} from 'gauge-typescript';
 
@@ -311,7 +311,7 @@ String elementId = scenarioStore.get("element-id") as string;
 * By default gauge captures the display screen on failure if this feature has been enabled.
 If you need to take CustomScreenshots (using webdriver for example) because you need only a part of the screen captured, this can be done by assigning a `CustomScreenshotGrabber` to `gauge-typescript`
 
-```typescript
+```ts
 // import CustomScreenshotGrabber
 import {CustomScreenGrabber} from 'gauge-typescript';
 
@@ -327,7 +327,7 @@ export default class ScreenGrabber {
 
 DEPRECATION NOTICE: `CustomScreenshotGrabber` has been deprecated since gauge-ts v0.0.5, please use `CustomScreenshotWriter` as mentioned below
 
-```typescript
+```ts
 import { CustomScreenshotWriter } from 'gauge-typescript';
 import { join, basename } from 'path';
 
@@ -353,7 +353,7 @@ Custom messages/data can be added to execution reports using the below API from 
 
 These messages will appear under steps in the execution reports.
 
-```typescript
+```ts
 // import the class
 import {Gauge} from 'gauge-typescript';
 
@@ -366,7 +366,7 @@ Gauge.writeMessage("Custom message for report");
 Custom screenshot can be added to execution reports using the below API from the step implementations or hooks.
 
 These screenshots will appear under steps in the execution reports.
-```typescript
+```ts
 // import the class
 import {Gauge} from 'gauge-typescript';
 
@@ -379,7 +379,7 @@ await Gauge.captureScreenshot();
 The default behavior in gauge is to break execution on the first failure in a step. So, if the first step in a scenario fails, the subsequent steps are skipped. While this works for a majority of use cases, there are times when you need to execute all steps in a scenario irrespective of whether the previous steps have failed or not.
 
 To address that requirement, gauge provides a way for language runners to mark steps as recoverable, depending on whether the step implementation asks for it explicitly. Each language runner uses different syntax, depending on the language idioms to allow a step implementation to be marked to continue on failure.
-```typescript
+```ts
 // import type
 import {ContinueOnFailure} from 'gauge-typescript';
 
@@ -398,7 +398,7 @@ export default class StepImplementation {
 
 Continue on Failure can take an optional parameter to specify the list of error classes on which it would continue to execute further steps in case of failure. This is currently supported only with the following runners.
 
-```typescript
+```ts
 // import type
 import {ContinueOnFailure} from 'gauge-typescript';
 export default class StepImpl {
