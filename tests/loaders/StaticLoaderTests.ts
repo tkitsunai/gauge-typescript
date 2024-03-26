@@ -6,7 +6,7 @@ import { Util } from '../../src/utils/Util';
 describe('StaticLoaderTests', () => {
 
     let loader: StaticLoader;
-    const TEXT_1 = `import { Step } from "gauge-ts";` + EOL +
+    const TEXT_1 = `import { Step } from "gauge-typescript";` + EOL +
         `export default class StepImpl {` + EOL +
         `    @Step("foo")` + EOL +
         `    public async foo() {` + EOL +
@@ -14,17 +14,25 @@ describe('StaticLoaderTests', () => {
         `    }` + EOL +
         `}`;
 
-    const TEXT_2 = `import { Step } from "gauge-ts";` + EOL +
+    const TEXT_2 = `import { Step } from "gauge-typescript";` + EOL +
         `export default class StepImpl {` + EOL +
         `    @Step("bar")` + EOL +
         `    public async bar() {` + EOL +
         `        console.log("Hello World");` + EOL +
         `    }` + EOL +
         `}`;
-    const TEXT_3 = `import { Step } from "gauge-ts";` + EOL +
+    const TEXT_3 = `import { Step } from "gauge-typescript";` + EOL +
         `export default class StepImpl {` + EOL +
         `    @Step(["hello","hi"])` + EOL +
         `    public async bar() {` + EOL +
+        `        console.log("Hello World");` + EOL +
+        `    }` + EOL +
+        `}`;
+
+    const TEXT_4 = `import { Step } from "gauge-typescript";` + EOL +
+        `export default class StepImpl {` + EOL +
+        `    @Step(["hello"])` + EOL +
+        `    public async parameterTest(param: string) {` + EOL +
         `        console.log("Hello World");` + EOL +
         `    }` + EOL +
         `}`;
@@ -50,6 +58,15 @@ describe('StaticLoaderTests', () => {
             loader.loadStepsFromText(file, TEXT_3);
             expect(registry.isImplemented("hello")).toBe(true);
         });
+
+        it('should load steps from file with parameter', () => {
+            const file = 'StepImpl.ts';
+
+            loader.loadStepsFromText(file, TEXT_4);
+
+            expect(registry.isImplemented("hello")).toBe(true);
+        });
+
     });
 
     describe('.reloadSteps', () => {

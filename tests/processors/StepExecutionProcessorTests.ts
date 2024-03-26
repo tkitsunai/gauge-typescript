@@ -47,7 +47,7 @@ describe('StepExecutionProcessor', () => {
 
             expect(result?.getFailed()).toBe(true);
             expect(result?.getErrormessage()).toBe('Argument length mismatch for `hello`. Actual Count: [1], Expected Count: [0]');
-            expect(capture).toBeCalled();
+            expect(capture).toHaveBeenCalled();
         });
 
         it('should process step execution request', async () => {
@@ -115,7 +115,7 @@ describe('StepExecutionProcessor', () => {
             expect(result?.getFailed()).toBe(true);
             expect(result?.getErrormessage()).toContain('1 !== 2');
             expect(result?.getRecoverableerror()).toBe(true);
-            expect(capture).toBeCalledTimes(0);
+            expect(capture).toHaveBeenCalledTimes(0);
         });
 
         it('should process step execution request when step fails', async () => {
@@ -144,7 +144,7 @@ describe('StepExecutionProcessor', () => {
             expect(result?.getFailed()).toBe(true);
             expect(result?.getErrormessage()).toBe('failed');
             expect(result?.getStacktrace()).toBe('');
-            expect(capture).toBeCalledTimes(0);
+            expect(capture).toHaveBeenCalledTimes(0);
         });
     });
 });

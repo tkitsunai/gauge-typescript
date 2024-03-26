@@ -48,7 +48,6 @@ export class StaticLoader extends CodeHelper {
     private loadFiles() {
         Util.getListOfFiles().forEach((file: string) => {
             const text = Util.readFile(file);
-
             this.loadStepsFromText(file, text);
         });
     }
@@ -65,7 +64,7 @@ export class StaticLoader extends CodeHelper {
                 file,
                 undefined,
                 StaticLoader.getRange(node, source),
-                stepTexts.length > 1
+                stepTexts.length > 1,
             ));
         }
     }
@@ -82,5 +81,4 @@ export class StaticLoader extends CodeHelper {
 
         return new Range(new Position(start.line + 1, start.character), new Position(end.line + 1, end.character));
     }
-
 }

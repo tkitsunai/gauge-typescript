@@ -1,6 +1,6 @@
 {
   "name": "gauge-typescript",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "TypeScript language runner for Gauge",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -15,6 +15,7 @@
     "prepublishOnly": "tsc",
     "package": "sh build.sh package",
     "installPlugin": "sh build.sh install",
+    "finstallPlugin": "sh build.sh forceinstall",
     "uninstallPlugin": "sh build.sh uninstall"
   },
   "repository": {
@@ -36,22 +37,22 @@
     "url": "https://github.com/tkitsunai/gauge-typescript/issues"
   },
   "dependencies": {
-    "@grpc/grpc-js": "^1.10.3",
+    "@grpc/grpc-js": "^1.10.4",
     "google-protobuf": "^3.21.2",
     "klaw-sync": "^6.0.0",
     "ts-node": "10.9.2",
     "tsx": "^4.7.1",
-    "typescript": "5.4.2",
+    "typescript": "5.4.3",
     "uuid": "^9.0.1"
   },
   "devDependencies": {
     "@types/google-protobuf": "^3.15.12",
     "@types/jest": "^29.5.12",
     "@types/klaw-sync": "^6.0.5",
-    "@types/node": "^20.11.28",
+    "@types/node": "^20.11.30",
     "@types/uuid": "^9.0.8",
-    "@typescript-eslint/eslint-plugin": "^7.2.0",
-    "@typescript-eslint/parser": "^7.2.0",
+    "@typescript-eslint/eslint-plugin": "^7.4.0",
+    "@typescript-eslint/parser": "^7.4.0",
     "codecov": "^3.8.3",
     "eslint": "^8.57.0",
     "grpc-tools": "^1.12.4",
